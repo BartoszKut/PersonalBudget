@@ -1,0 +1,121 @@
+# depslib dependency file v1.0
+1611183029 source:c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\date.cpp
+	"Date.h"
+
+1611180882 source:c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\filewithtransactions.cpp
+	"FileWithTransactions.h"
+
+1611174624 source:c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\filewithusers.cpp
+	"FileWithUsers.h"
+
+1611183229 source:c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\helpfulfunctions.cpp
+	"HelpfulFunctions.h"
+
+1611183598 source:c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\main.cpp
+	<iostream>
+	"PersonalBudget.h"
+
+1610094955 source:c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\markup.cpp
+	<stdio.h>
+	"Markup.h"
+	<errno.h>
+	<iconv.h>
+	<windows.h>
+	<mbstring.h>
+
+1610094955 c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\markup.h
+	<stdlib.h>
+	<string.h>
+	<string>
+	<afx.h>
+
+1611077663 source:c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\menumanager.cpp
+
+1611175870 source:c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\personalbudget.cpp
+	"PersonalBudget.h"
+
+1611080392 source:c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\transaction.cpp
+	"Transaction.h"
+
+1611183329 source:c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\usermanager.cpp
+	"UserManager.h"
+
+1611078520 source:c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\xmlfile.cpp
+	"XMLFile.h"
+
+1611169634 source:c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\user.cpp
+	"User.h"
+
+1611078468 c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\user.h
+	<iostream>
+
+1611174627 c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\filewithusers.h
+	<iostream>
+	<vector>
+	"XMLFile.h"
+	"Markup.h"
+	"User.h"
+
+1611078595 c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\xmlfile.h
+	<iostream>
+	"Markup.h"
+
+1611080425 c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\transaction.h
+	<iostream>
+
+1611175693 c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\filewithtransactions.h
+	<iostream>
+	<vector>
+	"XMLFile.h"
+	"Transaction.h"
+	"HelpfulFunctions.h"
+
+1611168471 c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\helpfulfunctions.h
+	<iostream>
+	<string>
+	<sstream>
+	<algorithm>
+	<windows.h>
+	<winbase.h>
+	<stdlib.h>
+
+1611081921 c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\date.h
+	<iostream>
+	<string>
+	<sstream>
+	<algorithm>
+	<windows.h>
+	<winbase.h>
+	<stdlib.h>
+	"HelpfulFunctions.h"
+
+1611183329 c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\usermanager.h
+	<iostream>
+	<vector>
+	<algorithm>
+	"User.h"
+	"FileWithUsers.h"
+	"HelpfulFunctions.h"
+
+1611183229 source:c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\transactionmanager.cpp
+	"TransactionManager.h"
+
+1611175815 c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\transactionmanager.h
+	<iostream>
+	<vector>
+	<windows.h>
+	<stdlib.h>
+	"User.h"
+	"HelpfulFunctions.h"
+	"Transaction.h"
+	"FileWithTransactions.h"
+	"Date.h"
+
+1611183564 c:\users\marketing\desktop\programowanie\c++\personalbudget\personalbudget\personalbudget.h
+	<iostream>
+	<vector>
+	<algorithm>
+	"UserManager.h"
+	"TransactionManager.h"
+	"HelpfulFunctions.h"
+
