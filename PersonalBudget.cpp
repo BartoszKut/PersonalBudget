@@ -13,7 +13,7 @@ void PersonalBudget::userRegistration() {
 void PersonalBudget::userLogIn() {
     userManager.userLogIn();
     if(isUserLogIn() == true) {
-        transactionManager = new TransactionManager(NAME_OF_FILE_WITH_TRANSACTIONS, userManager.getLoggedInUser());
+        transactionManager = new TransactionManager(NAME_OF_FILE_WITH_INCOMES, NAME_OF_FILE_WITH_EXPENSES, userManager.getLoggedInUser());
         loggedInUser = userManager.getLoggedInUser();
     }
 }
@@ -45,7 +45,7 @@ char PersonalBudget::chooseOptionAtMainMenu() {
 
 
 char PersonalBudget::chooseOptionAtTransactionMenu() {
-    char choice = NULL;
+    char choice;
     system("cls");
     cout << "Imie uzytkownika: " << loggedInUser.getName() << endl;
     cout << "Nazwisko uzytkownika: " << loggedInUser.getSurname() << endl;
@@ -74,6 +74,21 @@ void PersonalBudget::addIncome() {
 
 void PersonalBudget::addExpense() {
     transactionManager -> addExpense();
+}
+
+
+void PersonalBudget::showCurrentMonthBalance() {
+    transactionManager -> showCurrentMonthBalance();
+}
+
+
+void PersonalBudget::showSelectedPeriodBalance() {
+    transactionManager -> showSelectedPeriodBalance();
+}
+
+
+void PersonalBudget::showPreviousMonthBalance() {
+    transactionManager -> showPreviousMonthBalance();
 }
 
 

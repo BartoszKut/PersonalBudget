@@ -17,8 +17,8 @@ using namespace std;
 class Date {
 
 public:
-    static int giveStartDate();
-    static int giveEndDate();
+    //static int giveStartDate();
+    //static int giveEndDate();
     static int setStartDate();
     static int setEndDate(int startDate);
     static string getDateFromUser();
@@ -26,6 +26,9 @@ public:
     static int dateConversionFromStringToInt(string date);
     static bool checkCorrectnessOfDate(string y, string m, string d);
     static string conversionIntDateToStringDate(int number);
+    static int getDateOfFirstDayOfMonth(int date);
+    static int getFirstDayOfPreviousMonth(int date);
+    static int getLastDayOFPreviousMonth (int previousMonthFirstDayDate);
 };
 
 #endif

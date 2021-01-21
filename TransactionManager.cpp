@@ -50,8 +50,8 @@ void TransactionManager::addExpense() {
 
 
 float TransactionManager::getTransactionValue() {
-    float transactionValue = NULL;
-    return transactionValue = HelpfulFunctions::valueConversionForFloat();
+    float transactionValue = 0;
+    return transactionValue = HelpfulFunctions::getValueConversionForFloat();
 }
 
 
@@ -63,39 +63,105 @@ int TransactionManager::getNewTransactionId(vector<Transaction> &transactions) {
 }
 
 
+void TransactionManager::showCurrentMonthBalance() {
+    showBalanceFromCurrentMonth(incomes, "DOCHODOW", expenses, "WYDATKOW");
+}
 
 
+void TransactionManager::showSelectedPeriodBalance() {
+    showBalanceFromSelectedPeriod(incomes, "PRZYCHODOW", expenses, "WYDATKOW");
+}
 
 
+void TransactionManager::showPreviousMonthBalance() {
+    showBalanceFromPreviousMonth(incomes, "PRZYCHODOW", expenses, "WYDATKOW");
+}
 
-/*Transaction TransactionManager::giveDataOfNewIncome() {
-    Transaction income;
-    int userDate;
-    double value;
-    string kindOfIncome;
 
-    income.setIncomeId(getIdOfLastIncome() + 1);
-    income.setUserId(LOGGED_USER_ID);
+void TransactionManager::showBalanceFromCurrentMonth(vector <Transaction> transactions, string keyword, vector <Transaction> transactionsSecond, string keywordSecond) {
+    system("cls");
+    int endDate = Date::dateConversionFromStringToInt(Date::getActualDateInString());
+    int startDate = Date::getDateOfFirstDayOfMonth(endDate);
 
-    cout << "Data uzyskania przychodu: " << endl << endl;
-    cout << "1. Dzis. " << endl;
-    cout << "2. Inna data. " << endl;
+    cout << "BILANS PRZYCHODOW I WYDATKOW Z OKRESU: " << Date::conversionIntDateToStringDate(startDate) << " do " << Date::conversionIntDateToStringDate(endDate) << endl;
+    float incomesSum = sortAndDisplayTransactions(transactions, keyword, startDate, endDate);
+    cout << endl << "---------------------------------------------------------------" << endl;
+    float expensesSum = sortAndDisplayTransactions(transactionsSecond, keywordSecond, startDate, endDate);
+    cout << endl << "---------------------------------------------------------------" << endl;
+    cout << endl << "ROZNICA POMIEDZY PRZYCHODAMI I WYDATKAMI: " << incomesSum - expensesSum << endl;
+    system("pause");
+}
 
-    char choice;
-    choice = HelpfulFunctions::getChar();
-    if(choice == '1') {
-        income.setDate(HelpfulFunctions::dateConversionFromStringToInt(HelpfulFunctions::getDateInString()));
+
+float TransactionManager::sortAndDisplayTransactions (vector <Transaction> transactions, string keyword, int startDate, int endDate) {
+    vector <Transaction> transactionsOfLoggedUser;
+
+    for(int i = 0; i < transactions.size(); i++) {
+        if(transactions[i].getUserId() == loggedInUser.getUserId()) {
+            transactionsOfLoggedUser.push_back(transactions[i]);
+        }
     }
-    else if(choice == '2') {
-        cout << "Wprowadz date (rrrr-mm-dd): "; // dodac mechanizmy sprawdzajace poprawnosc daty
-        userDate = HelpfulFunctions::dateConversionFromStringToInt(HelpfulFunctions::getDateFromUser());
-        income.setDate(userDate);
-        cout << userDate << endl;
-    }
+    sort(transactionsOfLoggedUser.begin(), transactionsOfLoggedUser.end(), dateComparison);
 
-    cout << "Podaj wartosc przychodu: ";
-    value = HelpfulFunctions::valueConversionForDouble();
-    cout << value; // usunac po fazie testow
-    income.setValue(value);
-    return income;
-}*/
+    float sum = 0;
+    cout << endl << "ZESTAWIENIE " << keyword << endl;
+
+    for(int i = 0; i < transactionsOfLoggedUser.size(); i++) {
+        if(transactionsOfLoggedUser[i].getDate() >= startDate && transactionsOfLoggedUser[i].getDate() <= endDate) {
+            cout << Date::conversionIntDateToStringDate(transactionsOfLoggedUser[i].getDate()) << " " << transactionsOfLoggedUser[i].getKindOfTransaction() << ": " << transactionsOfLoggedUser[i].getValue() << endl;
+            sum += transactionsOfLoggedUser[i].getValue();
+        }
+    }
+    cout << endl << "SUMA " << keyword << " : " << sum << endl;
+    return sum;
+}
+
+
+void TransactionManager::showBalanceFromSelectedPeriod(vector <Transaction> transactions, string keyword, vector <Transaction> transactionsSecond, string keywordSecond) {
+    system("cls");
+    int startDate = 0;
+    cout << "Podaj date rozpoczecia bilansu (yyyy-mm-dd): " << endl;
+    startDate = Date::dateConversionFromStringToInt(Date::getDateFromUser());
+
+    int endDate = 0;
+    cout << "Podaj date konca bilansu (yyyy-mm-dd): " << endl;
+
+    endDate = Date::dateConversionFromStringToInt(Date::getDateFromUser());
+
+    if (endDate < startDate) {
+        cout << "Data koncowa nie moze byc wczesniejsza niz poczatkowa." << endl;
+
+        cout << "Podaj date rozpoczecia bilansu (yyyy-mm-dd): " << endl;
+        startDate = Date::dateConversionFromStringToInt(Date::getDateFromUser());
+
+
+        cout << "Podaj date konca bilansu (yyyy-mm-dd): " << endl;
+        endDate = Date::dateConversionFromStringToInt(Date::getDateFromUser());
+    }
+    system("cls");
+
+    cout << "BILANS PRZYCHODOW I WYDATKOW Z OKRESU: " << Date::conversionIntDateToStringDate(startDate) << " do " << Date::conversionIntDateToStringDate(endDate) << endl;
+    double incomesSum = sortAndDisplayTransactions(transactions, keyword, startDate, endDate);
+    cout << endl << "---------------------------------------------------------------" << endl;
+    double expensesSum = sortAndDisplayTransactions(transactionsSecond, keywordSecond, startDate, endDate);
+    cout << endl << "---------------------------------------------------------------" << endl;
+    cout << endl << "ROZNICA POMIEDZY PRZYCHODAMI I WYDATKAMI: " << incomesSum - expensesSum << endl;
+    system("pause");
+}
+
+
+void TransactionManager::showBalanceFromPreviousMonth(vector <Transaction> transactions, string keyword, vector <Transaction> transactionsSecond, string keywordSecond) {
+    system("cls");
+
+    int startDate = Date::getFirstDayOfPreviousMonth(Date::dateConversionFromStringToInt(Date::getActualDateInString()));
+
+    int endDate = Date::getLastDayOFPreviousMonth(startDate);
+
+    cout << "BILANS PRZYCHODOW I WYDATKOW Z OKRESU: " << Date::conversionIntDateToStringDate(startDate) << " do " << Date::conversionIntDateToStringDate(endDate) << endl;
+    double incomesSum = sortAndDisplayTransactions(transactions, keyword, startDate, endDate);
+    cout << endl << "---------------------------------------------------------------" << endl;
+    double expensesSum = sortAndDisplayTransactions(transactionsSecond, keywordSecond, startDate, endDate);
+    cout << endl << "---------------------------------------------------------------" << endl;
+    cout << endl << "ROZNICA POMIEDZY PRZYCHODAMI I WYDATKAMI: " << incomesSum - expensesSum << endl;
+    system("pause");
+}

@@ -37,7 +37,7 @@ char HelpfulFunctions::getChar() {
 }
 
 
-float HelpfulFunctions::valueConversionForFloat() {
+float HelpfulFunctions::getValueConversionForFloat() {
     float valueInFloat;
     int Length;
     string value;
@@ -84,8 +84,9 @@ string HelpfulFunctions::changeCommaForDot(string word) {
 
 
 float HelpfulFunctions::conversionStringToFloat(string str) {
-    float numberInDouble = atof(str.c_str());
-    return numberInDouble;
+    double numberInDouble = atof(str.c_str());
+    float numberInFloat = (float) numberInDouble;
+    return numberInFloat;
 }
 
 

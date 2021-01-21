@@ -8,6 +8,7 @@
 #include <windows.h>
 #include <winbase.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 using namespace std;
 
@@ -19,7 +20,7 @@ public:
     static string conversionIntToString(int number);
     static string getLine();
     static char getChar();
-    static float valueConversionForFloat();
+    static float getValueConversionForFloat();
     static string changeCommaForDot(string word);
     static bool checkCorrectnessOfValue(string value);
     static float conversionStringToFloat(string str);

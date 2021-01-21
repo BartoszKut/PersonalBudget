@@ -4,21 +4,19 @@
 #include <iostream>
 #include <vector>
 
-#include "XMLFile.h"
+#include"Markup.h"
 #include "Transaction.h"
 #include "HelpfulFunctions.h"
 
 using namespace std;
 
 
-class FileWithTransactions : public XMLFile {
-    const string NAME_OF_FILE_WITH_INCOMES;
-    const string NAME_OF_FILE_WITH_EXPENSES;
+class FileWithTransactions {
+    //const string NAME_OF_FILE_WITH_INCOMES;
+    //const string NAME_OF_FILE_WITH_EXPENSES;
 
 public:
-    FileWithTransactions(string fileName) : XMLFile(fileName) {};
-
-    void addTransactionToFile(Transaction transaction, string fileName);
+    void addTransactionToFile(Transaction transaction, string nameFileWithTransactions);
     vector<Transaction> loadTransactionsFromFile(string nameFileWithTransactions, int loggedUserId);
 };
 

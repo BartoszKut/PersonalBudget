@@ -4,18 +4,17 @@
 #include <iostream>
 #include <vector>
 
-#include "XMLFile.h"
 #include "Markup.h"
 #include "User.h"
 
 using namespace std;
 
 
-class FileWithUsers : public XMLFile {
+class FileWithUsers {
     const string NAME_OF_FILE_WITH_USERS;
 
 public:
-    FileWithUsers(string fileName) : XMLFile(fileName) {};
+    FileWithUsers(string fileName) : NAME_OF_FILE_WITH_USERS(fileName) {};
     vector<User> loadUsersFromFile();
     void addUserToFile(User user);
     void changePasswordLoggedInUser(User loggedInUser);

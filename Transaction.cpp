@@ -17,7 +17,7 @@ void Transaction::setDate(int newDate) {
 }
 
 
-void Transaction::setValue(double newValue) {
+void Transaction::setValue(float newValue) {
     value = newValue;
 }
 
@@ -42,7 +42,7 @@ int Transaction::getDate() {
 }
 
 
-double Transaction::getValue() {
+float Transaction::getValue() {
     return value;
 }
 

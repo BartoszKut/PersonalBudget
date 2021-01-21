@@ -3,7 +3,7 @@
 void FileWithUsers::addUserToFile(User user) {
     CMarkup xml;
 
-    bool fileExists = xml.Load(getFileName());
+    bool fileExists = xml.Load(NAME_OF_FILE_WITH_USERS);
 
     if (!fileExists)
     {
@@ -21,14 +21,14 @@ void FileWithUsers::addUserToFile(User user) {
     xml.AddElem("Login", user.getLogin());
     xml.AddElem("Password", user.getPassword());
 
-    xml.Save(getFileName());
+    xml.Save(NAME_OF_FILE_WITH_USERS);
 }
 
 
 vector<User> FileWithUsers::loadUsersFromFile() {
     vector <User> users;
     CMarkup xml;
-    xml.Load(getFileName());
+    xml.Load(NAME_OF_FILE_WITH_USERS);
     xml.FindElem("Users");
     xml.IntoElem();
     while (xml.FindElem("User")) {
@@ -53,7 +53,7 @@ vector<User> FileWithUsers::loadUsersFromFile() {
 
 void FileWithUsers::changePasswordLoggedInUser(User loggedInUser) {
     CMarkup xml;
-    xml.Load(getFileName());
+    xml.Load(NAME_OF_FILE_WITH_USERS);
     while (xml.FindChildElem("User")) {
         xml.IntoElem();
         xml.FindChildElem("UserId");
@@ -61,7 +61,7 @@ void FileWithUsers::changePasswordLoggedInUser(User loggedInUser) {
             xml.FindChildElem("Password");
             xml.RemoveChildElem();
             xml.AddChildElem("Password", loggedInUser.getPassword());
-            xml.Save(getFileName());
+            xml.Save(NAME_OF_FILE_WITH_USERS);
             return;
         }
         xml.OutOfElem();

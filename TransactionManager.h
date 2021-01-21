@@ -25,7 +25,7 @@ class TransactionManager {
     float expensesSum;
     float sum;
 
-    /*struct Comparison {
+    struct Comparison {
         bool operator()(Transaction first, Transaction second) {
             if(first.getDate() < second.getDate()) {
                 return true;
@@ -34,13 +34,18 @@ class TransactionManager {
                 return false;
             }
          }
-    } dateComparison;*/
+    } dateComparison;
+
     void addTransaction(vector<Transaction> &transactions, string fileName, string keyword);
     float getTransactionValue();
     int getNewTransactionId(vector<Transaction> &transactions);
+    float sortAndDisplayTransactions (vector <Transaction> transactions, string keyword, int startDate, int endDate);
+    void showBalanceFromCurrentMonth(vector <Transaction> transactions, string keyword, vector <Transaction> transactionsSecond, string keywordSecond);
+    void showBalanceFromSelectedPeriod(vector <Transaction> transactions, string keyword, vector <Transaction> transactionsSecond, string keywordSecond);
+    void showBalanceFromPreviousMonth(vector <Transaction> transactions, string keyword, vector <Transaction> transactionsSecond, string keywordSecond);
 
 public:
-    TransactionManager (string nameOfFileWithTransactions, User LOGGEDINUSER) : fileWithTransactions(nameOfFileWithTransactions), loggedInUser(LOGGEDINUSER) {
+    TransactionManager (string nameOfFileWithIncomes, string nameOfFileWithExpenses, User LOGGEDINUSER) : INCOMES_FILENAME(nameOfFileWithIncomes), EXPENSES_FILENAME(nameOfFileWithExpenses), loggedInUser(LOGGEDINUSER) {
         incomes = fileWithTransactions.loadTransactionsFromFile(INCOMES_FILENAME, loggedInUser.getUserId());
         expenses = fileWithTransactions.loadTransactionsFromFile(EXPENSES_FILENAME, loggedInUser.getUserId());
         sum = 0;
@@ -49,9 +54,13 @@ public:
     };
     void addIncome();
     void addExpense();
-    void showSelectedPeriodBalance();
     void showCurrentMonthBalance();
+    void showSelectedPeriodBalance();
     void showPreviousMonthBalance();
+
+    //void showSelectedPeriodBalance();
+
+    //void showPreviousMonthBalance();
 };
 
 #endif

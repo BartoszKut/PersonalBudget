@@ -18,8 +18,6 @@ class PersonalBudget {
     TransactionManager *transactionManager;
     const string NAME_OF_FILE_WITH_INCOMES;
     const string NAME_OF_FILE_WITH_EXPENSES;
-    const string NAME_OF_FILE_WITH_TRANSACTIONS;
-
 
 public:
     PersonalBudget(string nameOfFileWithUsers, string nameOfFileWithIncomes, string nameOfFileWithExpenses)
@@ -39,6 +37,9 @@ public:
     void addExpense();
     void userLogOut();
     void changePasswordOfLoggedUser();
+    void showCurrentMonthBalance();
+    void showSelectedPeriodBalance();
+    void showPreviousMonthBalance();
 };
 
 #endif
